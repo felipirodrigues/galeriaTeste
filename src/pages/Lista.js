@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-import { json } from "react-router"
-import axios from "axios"
-import { lerAPI } from "../assets/components/api"
+import { api } from "../assets/components/api"
+import { Link } from "react-router-dom"
 
-const BASEURL = 'https://jsonplaceholder.typicode.com'
 export const Lista = () => { 
 
     const [lista, setLista] = useState([])
@@ -17,7 +15,7 @@ export const Lista = () => {
 
     const carregarLista = async () => {
         setLoading(true)
-        let json = await lerAPI.baixarLista()
+        let json = await api.getAlbums()
         setLista(json)
         setLoading(false)
     }
@@ -35,7 +33,7 @@ export const Lista = () => {
                         <ul>
                             {lista.map(
                                 (item, key) => (
-                                    <li>{item.title}</li>
+                                    <li><Link to={`/album/${item.id}`}>{item.title}</Link></li>
                                 )
                             )}
                         </ul>

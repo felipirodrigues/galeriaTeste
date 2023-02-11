@@ -1,4 +1,3 @@
-import Estilo from '../../assets/css/Estilo.module.css'
 import { Routes, Route } from 'react-router-dom'
 import Lista from '../../pages/Lista';
 import { Album } from '../../pages/Album';
@@ -9,8 +8,8 @@ function Rotas() {
   return (
       <Routes>
         <Route path='/' element={<Lista />}/>
-        <Route path='/album' element={<Album />}/>
-        <Route path='/foto' element={<Foto />}/>  
+        <Route path='/album/:id' element={<Album />}/>
+        <Route path='/foto/:id' element={<Foto />}/>  
         <Route path='*' element={<Erro />}/>  
       </Routes>
   );
